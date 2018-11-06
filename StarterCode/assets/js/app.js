@@ -11,13 +11,13 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-// Create an SVG wrapper, append an SVG group that will hold our chart,
-// and shift the latter by left and top margins.
-var svg = d3
-  .select("#scatter")
+//create an SVG wrapper with css classes to support responsive sizing
+
+  var svg = d3.select("div#container")
   .append("svg")
-  .attr("width", svgWidth)
-  .attr("height", svgHeight);
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 960 500")
+  .classed("svg-content", true);
 
 // Append an SVG group
 var chartGroup = svg.append("g")
@@ -31,8 +31,8 @@ var chosenYAxis = "obesity";
 function xScale(data, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
-      .domain([d3.min(data, d => d[chosenXAxis]) * 0.8,
-        d3.max(data, d => d[chosenXAxis]) * 1.2
+      .domain([d3.min(data, d => d[chosenXAxis]) * 0.9,
+        d3.max(data, d => d[chosenXAxis]) * 1.05
       ])
       .range([0, width]);
     return xLinearScale;
@@ -212,13 +212,11 @@ function yScale(data, chosenYAxis) {
       .attr("fill", d => d.color)
       .attr("opacity", ".4")
 
-
-  // append x axis
+    // append x axis
     var xAxis = chartGroup.append("g")
     .classed("x-axis", true)
     .attr("transform", `translate(0, ${height})`)
     .call(bottomAxis);
-
 
 
     // Create group for  3 x- axis labels
@@ -262,7 +260,6 @@ function yScale(data, chosenYAxis) {
       .classed("axis-text", true);
   
     var obesityLabel = ylabelsGroup.append("text")
-      // .attr("transform", `translate( 0- ${margin.left}, ${height/2})`)
       .attr("x", -height/2)
       .attr("y", -80)
       .attr("value", "obesity") // value to grab for event listener
@@ -282,19 +279,9 @@ function yScale(data, chosenYAxis) {
       .attr("value", "noHealthInsurance") // value to grab for event listener
       .classed("inactive", true)
       .text("Lacks Healthcare (%)");
-
-    // // append y axis
-    // chartGroup.append("text")
-    //   .attr("transform", "rotate(-90)")
-    //   .attr("y", 0 - margin.left)
-    //   .attr("x", 0 - (height / 2))
-    //   .attr("dy", "1em")
-    //   .classed("axis-text", true)
-    //   .text("Obese(%)");
   
     // updateToolTip for x function above csv import
     var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
-
 
     // x axis labels event listener
     xlabelsGroup.selectAll("text")
@@ -360,7 +347,8 @@ function yScale(data, chosenYAxis) {
           }
         }
       });
-      // y axis labels event listener
+
+    // y axis labels event listener
     ylabelsGroup.selectAll("text")
     .on("click", function() {
       // get value of selection

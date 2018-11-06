@@ -20,32 +20,37 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-12">
-        <h1>D3Times</h1>
+      <div class="col-xs-12 col-md-9">
+        <hr>
+        <hr>
+        <h1>Correlation Exploration</h1>
+        <hr>
+        <hr>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12  col-md-9">
-        <div id="scatter">
-          <!-- We append our chart here. -->
+        <div id="container" class="svg-container">
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12  col-md-9">
         <div class="article">
-          <h2>Correlations Discovered Between Health Risks and Age, Income</h2>
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+          <h2>Discover Correlations with Interactive Census Data Chart</h2>
+          <p>Use the interactive chart above to see correlations between various demographic information collected by the US 
+            Census Bureau. Click on the gray axis labels to change the data shown by the bubbles in the chart. The color of 
+            the bubbles indicates how the state has voted in the past few presidential elections (red for Republican, blue 
+            for Democrat). THe area of teh bubble represents the relative population of each state.</p>
 
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+          <p>By selecting different data to display and observing the resultant chart you can find many intersting correlations.
+            For example: if you select Obesity ont he left axis and poverty on the bottom axis, you will see that there is a 
+            positive correlation between the number of people in a state that are obese and hte number living in poverty. you
+            will also observe that the states with higher levels of obesity and poverty are more likely to be sates that voted
+            for Republican presidential candidates in the past few elections.
+          </p>
 
-          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+          <p>What correlations will you discover?</p>
         </div>
       </div>
     </div>
@@ -53,7 +58,7 @@
 
   <!-- Footer-->
   <div id="footer">
-    <p>The Coding Boot Camp&copy;2016</p>
+    <!-- <p>The Coding Boot Camp&copy;2016</p> -->
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
